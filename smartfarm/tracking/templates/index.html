@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live GPS Tracker</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>#map { height: 100vh; }</style>
+</head>
+<body>
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  const map = L.map('map').setView([-15.39, 28.33], 16);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+  let marker = null;
+
+  async function fetchData() {
+    const res = await fetch("http://your-server-ip/api/latest-gps/");
+    const data = await res.json();
+    const lat = data.latitude;
+    const lon = data.longitude;
+
+    if (marker) {
+      marker.setLatLng([lat, lon]);
+    } else {
+      marker = L.marker([lat, lon]).addTo(map);
+    }
+  }
+
+  setInterval(fetchData, 5000);
+
+  const geofence = L.circle([-15.39, 28.33], {
+  radius: 100,
+  color: 'red',
+  fillOpacity: 0.1
+}).addTo(map);
+
+if (!geofence.getBounds().contains(marker.getLatLng())) {
+  alert("Outside geofence!");
+}
+
+</script>
+</body>
+</html>

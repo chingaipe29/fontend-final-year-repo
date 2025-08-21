@@ -1,0 +1,136 @@
+.app-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.sidebar {
+  width: 300px;
+  padding: 20px;
+  background: #f5f5f5;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.dark-mode .sidebar {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
+.map-container {
+  flex: 1;
+  position: relative;
+}
+
+.control-panel {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.dark-mode .control-panel {
+  background: #2d2d2d;
+}
+
+.info-card {
+  margin: 15px 0;
+  padding: 10px;
+  background: #e9f5ff;
+  border-radius: 5px;
+}
+
+.dark-mode .info-card {
+  background: #003366;
+}
+
+.geofence-status {
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.geofence-status.inside {
+  background: #e6f7e6;
+  color: #2e7d32;
+}
+
+.geofence-status.outside {
+  background: #ffebee;
+  color: #c62828;
+  animation: pulse 1.5s infinite;
+}
+
+.history {
+  margin-top: 20px;
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.dark-mode .history {
+  background: #2d2d2d;
+}
+
+.history ul {
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.history li {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.dark-mode .history li {
+  border-bottom: 1px solid #444;
+}
+
+.alert-banner {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff4444;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 1000;
+  animation: slideIn 0.5s forwards;
+}
+
+button {
+  background: #4a89dc;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #3b7dd8;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { top: -50px; opacity: 0; }
+  to { top: 20px; opacity: 1; }
+}
