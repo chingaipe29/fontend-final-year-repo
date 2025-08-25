@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'tracking',
     'corsheaders',
+    
 ]
 
 MIDDLEWARE = [
@@ -57,7 +59,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",           # or your actual React frontend origin
     "http://192.168.137.87:3000",
     "http://192.168.43.214:3000",
-    "http://192.168.137.246:3000"
+    "http://192.168.137.246:3000",
+    "http://192.168.43.214:3000"
 ]
 
 ROOT_URLCONF = 'smartfarm.urls'
@@ -130,5 +133,23 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework.permissions.IsAuthenticated",
+    ),
+}
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# In settings.py, make sure you have:
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+}
