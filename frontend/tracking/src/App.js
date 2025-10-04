@@ -10,6 +10,12 @@ import { setAuth } from "./api";
 import AddEmployeeForm from './pages/Employee';
 import AddEquipmentForm from './pages/Equipment';
 import AddLivestockForm from './pages/Livestock';
+import ProfileSection from "./pages/Userprofile";
+import Alerts from "./pages/Alerts";
+import EmployeeManagement from "./pages/EmployeeM";
+import LivestockManagement from "./pages/LivestockM"
+import  EquipmentManagement from "./pages/EquipmentM"
+
 // In your main App component or index.js
 
 
@@ -59,7 +65,7 @@ export default function App() {
             </PublicRoute>
           }
         />
-
+        <Route path="/user-account" element={<ProfileSection />} />
         {/* Protected routes - FLAT structure */}
         <Route
           path="/"
@@ -69,11 +75,36 @@ export default function App() {
             </PrivateRoute>
           }
         />
+         <Route path="/alerts" element={<Alerts/>} />
         <Route
           path="/add-employee"
           element={
             <PrivateRoute>
               <AddEmployeeForm />
+            </PrivateRoute>
+          }
+        />
+         <Route
+          path="/equipmentM"
+          element={
+            <PrivateRoute>
+              < EquipmentManagement />
+            </PrivateRoute>
+          }
+        />
+         <Route
+          path="/user"
+          element={
+            <PrivateRoute>
+              <ProfileSection />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/employeesM"
+          element={
+            <PrivateRoute>
+              <EmployeeManagement />
             </PrivateRoute>
           }
         />
@@ -85,6 +116,15 @@ export default function App() {
             </PrivateRoute>
           }
         />
+         <Route
+          path="/livestockM"
+          element={
+            <PrivateRoute>
+              <LivestockManagement />
+            </PrivateRoute>
+          }
+        />
+        
         <Route
           path="/add-livestock"
           element={

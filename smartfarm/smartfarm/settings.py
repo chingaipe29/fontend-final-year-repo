@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'tracking',
     'corsheaders',
-    
+     "rest_framework_simplejwt",
 ]
 
 MIDDLEWARE = [
@@ -60,7 +60,9 @@ CORS_ALLOWED_ORIGINS = [
     "http://192.168.137.87:3000",
     "http://192.168.43.214:3000",
     "http://192.168.137.246:3000",
-    "http://192.168.43.214:3000"
+    "http://192.168.43.214:3000",
+    "http://41.63.30.251:3000",
+    "http://172.16.0.51:3000"
 ]
 
 ROOT_URLCONF = 'smartfarm.urls'
@@ -153,3 +155,4 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
 }
+APPEND_SLASH = True

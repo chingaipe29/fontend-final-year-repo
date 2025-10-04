@@ -133,4 +133,10 @@ button:hover {
 @keyframes slideIn {
   from { top: -50px; opacity: 0; }
   to { top: 20px; opacity: 1; }
+};
+/* Add this to your main CSS file if needed */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
 }
